@@ -4,17 +4,21 @@ firstexec=0
 
 function group_init() {
 
+	local userman=$USER
+	local servers=$HOSTNAME
+
 	if [[ $firstexec == 0 ]];then
 		clear 
 		echo "Welcome to Knock Knock chatroom"
 		read -p "say hi to another group member with type message right here : " firstmessage
 		clear
 		firstexec=1
+		echo "$userman joined blackcat chatroom"
+		echo "[$userman@$servers] $firstmessage" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
 	fi
-	echo "$USER joined blackcat chatroom"
-	echo "[$USER@$HOSTNAME] $firstmessage" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
+	
 	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
-	    echo "[$USER@$HOSTNAME] $line" 
+	    echo "[$userman@$servers] $line" 
 	done
 }
 

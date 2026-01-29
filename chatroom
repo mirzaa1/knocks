@@ -4,14 +4,15 @@
 clear
 firstexec=1
 echo "Welcome to blackcat chatroom"
-read -p "insert yout username : " username
+read -p "insert yout servername: " servername
 
 function group_init() {
 	
-	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
-	   		echo "[$username] $line" 
+	user=$USER
+
+	./socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read -r line; do
+		echo "[$user@$servername] $line" 
 	done
 }
 
 group_init
-

@@ -1,6 +1,6 @@
 #!/bin/env bash
 
 read -p "Insert room ip address : " roomaddress
-socat - TCP4:$roomaddress:51423
-
+#socat - TCP4:$roomaddress:51423
+socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
 #socat -u FILE:nama_file_asli TCP:IP_PENERIMA:4242

@@ -1,0 +1,27 @@
+#!/bin/env bash
+
+
+function group_send() {
+	read -p "mesagge : " messagetext
+	echo "$USER@$HOSTNAME $messagetext" | ./socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
+}
+
+
+function group_init() {
+
+	local firstexec=0
+
+	while true; do
+
+		if [[ $fistme == 0 ]];then
+			clear 
+			echo "Welcom to Knock Knoc chatroom"
+			echo "press ctrl+c to start type your message"
+		fi
+		firstexec=1
+		./socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423 
+		group_send
+	done
+}
+
+group_init

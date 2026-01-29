@@ -4,8 +4,8 @@ firstexec=0
 
 function group_init() {
 
-	local userman=$USER
-	local servers=$HOSTNAME
+	local userman=${USER}
+	local servers=${HOSTNAME}
 
 	if [[ $firstexec == 0 ]];then
 		clear 

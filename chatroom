@@ -19,10 +19,10 @@ listen_chat() {
             if [ "$sender" != "$user" ]; then
                 echo -e "\r[$sender]--> $msg"
                 echo -n "[$user]--| "
-		notify-send "$user" "$msg"
-		if [[ -n $(echo "$msg" | grep youtube ) ]]; then
-			exec /usr/bin/mpv "$msg" &
-		fi
+				notify-send "$user" "$msg"
+				if [[ -n $(echo "$msg" | grep youtube ) ]]; then
+					exec /usr/bin/mpv "$msg" &
+				fi
             fi
         fi
     done

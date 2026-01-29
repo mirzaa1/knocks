@@ -11,7 +11,7 @@ function group_init() {
 		clear
 		firstexec=1
 	fi
-	echo "$USERNAME joined blackcat chatroom"
+	echo "$USER joined blackcat chatroom"
 	echo "[$USERNAME@$HOSTNAME] $firstmessage" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
 	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
 	    echo "[$USERNAME@$HOSTNAME] $line"

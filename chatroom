@@ -4,7 +4,7 @@ firstexec=0
 
 function group_send() {
 	read -p "mesagge : " messagetext
-	echo "$USER@$HOSTNAME $messagetext" | ./socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
+	echo "$USER@$HOSTNAME $messagetext" | socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
 }
 
 
@@ -18,7 +18,7 @@ function group_init() {
 			echo "press ctrl+c to start type your message"
 		fi
 		firstexec=1
-		./socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423 
+		socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423 
 		group_send
 	done
 }

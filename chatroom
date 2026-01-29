@@ -11,7 +11,7 @@ function group_init() {
 		firstexec=1
 	fi
 	
-	echo $firstmessage | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
+	echo "[$USERNAME@$HOSTNAME] $firstmessage" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
 
 	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
 	    echo "[$USERNAME@$HOSTNAME] $line"

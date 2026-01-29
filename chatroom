@@ -5,15 +5,15 @@ firstexec=0
 function group_init() {
 
 	if [[ $firstexec == 0 ]];then
-			clear 
-			firstexec=1
-			echo "Welcome to blackcat chatroom"
-			read -p "insert yout username : " firstmessage
+		clear 
+		firstexec=1
+		echo "Welcome to blackcat chatroom"
+		read -p "insert yout username : " firstmessage
 	fi
 	
 	
 	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
-	    echo "[$firstmessage] $line" 
+	    echo "[$USER] $line" 
 	done
 }
 

@@ -12,7 +12,7 @@ listen_chat() {
             sender=$(echo "$line" | cut -d'>' -f1)
             msg=$(echo "$line" | cut -d'>' -f2-)
             if [ "$sender" != "$user" ]; then
-                echo -e "\r[$sender]:$msg"
+                echo -e "\r[$sender]-->:$msg"
                 echo -n "$user> "
             fi
         fi

@@ -4,21 +4,16 @@ firstexec=0
 
 function group_init() {
 
-	local userman=${USER}
-	local servers=${HOSTNAME}
-
-	
-	
-	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
-
-		if [[ $firstexec == 0 ]];then
+	if [[ $firstexec == 0 ]];then
 			clear 
 			firstexec=1
 			echo "Welcome to blackcat chatroom"
 			read -p "insert yout username : " firstmessage
-			echo "[$firstmessage] $firstmessage" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
-		fi
-	    echo "[$firstmessage@$servers] $line" 
+	fi
+	
+	
+	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
+	    echo "[$firstmessage] $line" 
 	done
 }
 

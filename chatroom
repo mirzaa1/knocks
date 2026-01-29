@@ -5,6 +5,10 @@ port=51423
 cast=255.255.255.255
 user=$USER
 
+clear &&
+echo "Welcome to Blackcat Chatroom"
+echo "Chat started as $user. Type message and press Enter."
+
 listen_chat() {
     socat -u UDP4-RECVFROM:$port,broadcast,fork - | while read -r line; do
         # Assume input format "user> message"
@@ -21,8 +25,7 @@ listen_chat() {
 
 listen_chat & pidnum=$!
 
-echo "Chat started as $user. Type message and press Enter."
-echo -n "$user> "
+echo -n "[$user]--> "
 while read -r msg; do
     echo "$user>$msg" | socat - UDP4-DATAGRAM:$cast:$port,broadcast
     echo -n "[$user]--> "

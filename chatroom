@@ -4,14 +4,16 @@ firstexec=0
 
 function group_init() {
 
-	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
+	if [[ $firstexec == 0 ]];then
+		clear 
+		echo "Welcome to Knock Knock chatroom"
+		read -p "say hi to another group member with type message right here" firstmessage
+		firstexec=1
+	fi
+	
+	echo $firstmessage | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
 
-			if [[ $firstexec == 0 ]];then
-				clear 
-				echo "Welcome to Knock Knock chatroom"
-				echo "press ctrl+c to start type your message"
-				firstexec=1
-			fi
+	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
 	    echo "[$USERNAME@$HOSTNAME] $line"
 	done
 }

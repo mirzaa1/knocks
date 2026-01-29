@@ -11,7 +11,7 @@ echo "Chat started as $user. Type message and press Enter."
 
 listen_chat() {
 
-    ./socat1 -u UDP4-RECVFROM:$port,broadcast,fork - | while read -r line; do
+    socat -u UDP4-RECVFROM:$port,broadcast,fork - | while read -r line; do
 
 
         if [[ $line == *">"* ]]; then
@@ -33,7 +33,7 @@ listen_chat & pidnum=$!
 
 echo -n "[$user]--| "
 while read -r msg; do
-    echo "$user>$msg" | ./socat1 - UDP4-DATAGRAM:$cast:$port,broadcast
+    echo "$user>$msg" | socat - UDP4-DATAGRAM:$cast:$port,broadcast
     echo -n "[$user]--| "
 done
 

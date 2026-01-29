@@ -23,5 +23,5 @@ function group_init() {
 	done
 }
 
-group_init &&
+group_init
 

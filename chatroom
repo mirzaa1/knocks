@@ -25,7 +25,7 @@ echo "Chat started as $user. Type message and press Enter."
 echo -n "$user> "
 while read -r msg; do
     echo "$user>$msg" | socat - UDP4-DATAGRAM:$cast:$port,broadcast
-    echo -n "$user> "
+    echo -n "[$user]--> "
 done
 
 kill $pidnum

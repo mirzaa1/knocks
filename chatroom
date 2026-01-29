@@ -17,7 +17,7 @@ listen_chat() {
             msg=$(echo "$line" | cut -d'>' -f2-)
             if [ "$sender" != "$user" ]; then
                 echo -e "\r[$sender]--> $msg"
-                if [[ echo -e "$msg" || grep "youtube.com" ]];then
+                if [[ $(echo -e "$msg" || grep "youtube.com") == true ]];then
                     mpv $(echo -e "$msg")
                 fi
                 notify-send "$sender" "$msg" &&

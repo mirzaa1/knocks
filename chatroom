@@ -1,10 +1,10 @@
 #!/bin/env bash
 
 
-			clear
-			firstexec=1
-			echo "Welcome to blackcat chatroom"
-			read -p "insert yout username : " username
+clear
+firstexec=1
+echo "Welcome to blackcat chatroom"
+read -p "insert yout username : " username
 
 function group_init() {
 	

@@ -7,7 +7,7 @@ function group_init() {
 	if [[ $firstexec == 0 ]];then
 		clear 
 		echo "Welcome to Knock Knock chatroom"
-		read -p "say hi to another group member with type message right here" firstmessage
+		read -p "say hi to another group member with type message right here : " firstmessage
 		firstexec=1
 	fi
 	

@@ -11,7 +11,7 @@ function group_init() {
 			clear && firstexec=1
 			echo "Welcome to blackcat chatroom"
 			read -p "insert yout username : " username
-			$currentuser=$username
+			currentuser=$username
 		fi
 
 	    echo "[$username] $line" 

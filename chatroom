@@ -4,12 +4,7 @@ firstexec=0
 
 function group_init() {
 
-	
-
-
-
-
-	./socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
+	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
 
 			if [[ $firstexec == 0 ]];then
 				clear 

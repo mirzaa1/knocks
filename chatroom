@@ -6,12 +6,12 @@ function group_init() {
 	
 	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
 		
-		currentuser="null"
+		currentuser=null
 		if [[ $firstexec == 0 ]];then
 			clear && firstexec=1
 			echo "Welcome to blackcat chatroom"
 			read -p "insert yout username : " username
-			currentuser=$username
+			username=$username
 		fi
 
 	    echo "[$username] $line" 

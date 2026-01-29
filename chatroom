@@ -4,17 +4,17 @@ firstexec=0
 
 function group_init() {
 	
-	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
+	./socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
 		
-		currentuser=null
 		if [[ $firstexec == 0 ]];then
-			clear && firstexec=1
+			clear
+			firstexec=1
 			echo "Welcome to blackcat chatroom"
 			read -p "insert yout username : " username
-			username=$username
+		else
+	   		echo "[$username] $line" 
 		fi
 
-	    echo "[$username] $line" 
 	done
 }
 

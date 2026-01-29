@@ -12,7 +12,8 @@ echo "Chat started as $user. Type message and press Enter."
 listen_chat() {
 
     ./socat1 -u UDP4-RECVFROM:$port,broadcast,fork - | while read -r line; do
-        # Assume input format "user> message"
+
+
         if [[ $line == *">"* ]]; then
             sender=$(echo "$line" | cut -d'>' -f1)
             msg=$(echo "$line" | cut -d'>' -f2-)

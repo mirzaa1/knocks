@@ -7,18 +7,18 @@ function group_init() {
 	local userman=${USER}
 	local servers=${HOSTNAME}
 
-	if [[ $firstexec == 0 ]];then
-		clear 
-		echo "Welcome to Knock Knock chatroom"
-		read -p "say hi to another group member with type message right here : " firstmessage
-		clear
-		firstexec=1
-		echo "$userman joined blackcat chatroom"
-		echo "[$userman@$servers] $firstmessage" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
-	fi
+	
 	
 	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read line; do
-	    echo "[$userman@$servers] $line" 
+
+		if [[ $firstexec == 0 ]];then
+			clear 
+			firstexec=1
+			echo "Welcome to blackcat chatroom"
+			read -p "insert yout username : " firstmessage
+			echo "[$firstmessage] $firstmessage" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
+		fi
+	    echo "[$firstmessage@$servers] $line" 
 	done
 }
 

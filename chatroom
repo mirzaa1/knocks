@@ -7,7 +7,7 @@ function group_init() {
 
 	if [[ $firstexec == 0 ]];then
 		clear 
-		echo "Welcome to Knock Knoc chatroom"
+		echo "Welcome to Knock Knock chatroom"
 		echo "press ctrl+c to start type your message"
 		firstexec=1
 	fi

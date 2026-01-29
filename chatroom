@@ -14,7 +14,7 @@ function group_init() {
 
 		if [[ $fistme == 0 ]];then
 			clear 
-			echo "Welcom to Knock Knoc chatroom"
+			echo "Welcome to Knock Knoc chatroom"
 			echo "press ctrl+c to start type your message"
 		fi
 		firstexec=1

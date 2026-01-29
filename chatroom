@@ -17,6 +17,7 @@ listen_chat() {
             msg=$(echo "$line" | cut -d'>' -f2-)
             if [ "$sender" != "$user" ]; then
                 echo -e "\r[$sender]--> $msg"
+                notify-send "$sender" "$msg" &&
                 echo -n "[$user]--| "
             fi
         fi

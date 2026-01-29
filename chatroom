@@ -1,5 +1,6 @@
 #!/bin/env bash
 
+firstexec=0
 
 function group_send() {
 	read -p "mesagge : " messagetext
@@ -8,8 +9,6 @@ function group_send() {
 
 
 function group_init() {
-
-	local firstexec=0
 
 	while true; do
 
@@ -24,4 +23,5 @@ function group_init() {
 	done
 }
 
-group_init
+group_init &&
+

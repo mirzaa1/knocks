@@ -1,26 +1,21 @@
 #!/bin/env bash
 
-firstexec=0
-
-function group_send() {
-	read -p "mesagge : " messagetext
-	echo "$USER@$HOSTNAME $messagetext" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
-}
-
 
 function group_init() {
 
-	while true; do
+	firstexec=0
 
-		if [[ $fistme == 0 ]];then
-			clear 
-			echo "Welcome to Knock Knoc chatroom"
-			echo "press ctrl+c to start type your message"
-		fi
-		firstexec=1
-		socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423 
-		group_send
-	done
+	if [[ $fistme == 0 ]];then
+		clear 
+		echo "Welcome to Knock Knoc chatroom"
+		echo "press ctrl+c to start type your message"
+	fi
+
+	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423 
+
+	read -p "mesagge : " messagetext
+	echo "$USER@$HOSTNAME $messagetext" | socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423
+	group_init
 }
 
 group_init

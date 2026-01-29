@@ -17,7 +17,7 @@ listen_chat() {
             msg=$(echo "$line" | cut -d'>' -f2-)
             if [ "$sender" != "$user" ]; then
                 echo -e "\r[$sender]--> $msg"
-                echo -n "$user> "
+                echo -n "[$user]--| "
             fi
         fi
     done
@@ -25,10 +25,10 @@ listen_chat() {
 
 listen_chat & pidnum=$!
 
-echo -n "[$user]--> "
+echo -n "[$user]--| "
 while read -r msg; do
     echo "$user>$msg" | socat - UDP4-DATAGRAM:$cast:$port,broadcast
-    echo -n "[$user]--> "
+    echo -n "[$user]--| "
 done
 
 kill $pidnum

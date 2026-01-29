@@ -10,7 +10,7 @@ function group_init() {
 	
 	user=$USER
 
-	./socat1 - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read -r line; do
+	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423  | while read -r line; do
 		echo "[$user@$servername] $line" 
 	done
 }

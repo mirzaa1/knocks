@@ -5,10 +5,11 @@ function group_init() {
 
 	firstexec=0
 
-	if [[ $fistme == 0 ]];then
+	if [[ $firstexec == 0 ]];then
 		clear 
 		echo "Welcome to Knock Knoc chatroom"
 		echo "press ctrl+c to start type your message"
+		firstexec=1
 	fi
 
 	socat - UDP4-DATAGRAM:255.255.255.255:51423,broadcast,bind=:51423 

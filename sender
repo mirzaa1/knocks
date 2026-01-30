@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+
+socat -u FILE:test.txt TCP:172.19.161.197:9876

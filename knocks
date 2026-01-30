@@ -1,0 +1,50 @@
+#!/bin/env bash
+
+function knock_header_banner() {
+    echo -e "
+         /$$   /$$ /$$   /$$  /$$$$$$   /$$$$$$  /$$   /$$
+        | $$  /$$/| $$$ | $$ /$$__  $$ /$$__  $$| $$  /$$/
+        | $$ /$$/ | $$$$| $$| $$  \ $$| $$  \__/| $$ /$$/ 
+        | $$$$$/  | $$ $$ $$| $$  | $$| $$      | $$$$$/  
+        | $$  $$  | $$  $$$$| $$  | $$| $$      | $$  $$  
+        | $$\  $$ | $$\  $$$| $$  | $$| $$    $$| $$\  $$ 
+        | $$ \  $$| $$ \  $$|  $$$$$$/|  $$$$$$/| $$ \  $$
+        |__/  \__/|__/  \__/ \______/  \______/ |__/  \__/
+                                                  
+        Knock know, whos there ! development by null@2026
+        --------------------------------------------------
+        Available service :
+        [1] Chatroom
+        [2] Sendfile
+        [3] Reciever
+        -------------------------------------------------                              
+    "
+    read -p "select option : " knockopt
+}
+
+function knock_header_nvmenu() {
+
+    if [[ $knockopt == 1 ]];then
+        echo "join chatroom"
+        return
+    fi
+
+    if [[ $knockopt == 2 ]];then
+        echo "send file"
+        return
+    fi
+
+    if [[ $knockopt == 3 ]];then
+        echo "recive file"
+        return
+    fi
+}
+
+
+function know_header() {
+    knock_header_banner &&
+    knock_header_nvmenu
+}
+
+know_header
+

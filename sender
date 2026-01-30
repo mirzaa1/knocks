@@ -1,11 +1,11 @@
 #!/bin/env bash
 
-if [[ -n $1 ]]; then
+if [[ -z $1 ]]; then
   echo "error file not exist"
   exit 1
 fi
 
-if [[ -n $2 ]]; then
+if [[ -z $2 ]]; then
   echo "error ip address not found"
   exit 1
 fi

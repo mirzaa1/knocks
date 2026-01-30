@@ -1,7 +1,13 @@
 #!/bin/env bash
 
 if [[ -n $1 ]]; then
-  return
+  echo "error file not exist"
+  exit 1
 fi
 
-socat -u FILE:$1 TCP:172.19.161.197:9876
+if [[ -n $2 ]]; then
+  echo "error ip address not found"
+  exit 1
+fi
+
+socat -u FILE:$1 TCP:$2:9876

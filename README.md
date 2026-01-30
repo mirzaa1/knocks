@@ -11,12 +11,21 @@ This section explains how to use Knock for chat and file transfer. the first ste
 ```
 cd knocks
 ```
-### chat
-for chating 
+### Chat
+To send a massage you must give execution permission to the file `chatroom ` with this command
+```
+chmod +x chatroom
+```
+for the next step, running this command for execute the script
+```
+./chatroom
+```
+> note the reciever must execute `receiver` file before sending the file
+
 ### Send Files
 To send a file you must give execution permission to the file `sender ` with this command
 ```
-chmmod +x sender 
+chmod +x sender 
 ```
 for the next step, running this command for execute the script
 ```
@@ -27,7 +36,7 @@ for the next step, running this command for execute the script
 ### Receive
 To Receive a file you must give execution permission to the file `receiver ` with this command
 ```
-chmmod +x receiver
+chmod +x receiver
 ```
 for the next step, running this command for execute the script
 ```
